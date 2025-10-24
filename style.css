@@ -201,3 +201,221 @@ ul#task-list li.completed {
     background-color: #f44336;
     color: white;
 }
+
+/*aqui começa o css do portfólio
+/* Importação da fonte do Google Fonts (opcional) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* ... (Mantenha todo o código CSS existente aqui) ... */
+
+/* -------------------------------------------------------------------------- */
+/* NOVOS ESTILOS PARA PORTFÓLIO (INDEX.HTML) E SOBRE.HTML - [MUDANÇA AQUI] */
+/* -------------------------------------------------------------------------- */
+
+/* Estilos para o container principal do Portfólio/Sobre */
+.presentation-container {
+    background-color: #fff; /* Cor de fundo branca */
+    padding: 60px 40px; /* Aumenta o padding para melhor visualização */
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Sombra mais destacada */
+    max-width: 1000px; /* Aumenta a largura máxima */
+    width: 90%;
+    min-height: 600px; /* Altura mínima para melhor visualização */
+    text-align: center;
+    transition: all 0.5s ease; /* Adiciona transição para efeitos */
+}
+
+/* Estilo do cabeçalho principal do Portfólio */
+.presentation-container h1 {
+    color: #008091; /* Cor principal */
+    font-size: 3em; /* Título maior */
+    margin-bottom: 10px;
+}
+
+/* Estilo do subtítulo/slogan */
+.slogan {
+    font-size: 1.5em;
+    color: #555;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* Estilos para a seção de Chamada para Ação (CTA) */
+.cta-section {
+    margin: 50px 0;
+}
+
+/* Estilo base dos botões CTA */
+.cta-section a {
+    text-decoration: none;
+    padding: 15px 35px; /* Aumenta o padding para botões maiores */
+    border-radius: 8px; /* Cantos mais suaves */
+    font-weight: bold;
+    margin: 0 15px;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições para interatividade */
+    text-transform: uppercase;
+}
+
+/* Botão Entrar com efeito de "levantar" no hover */
+.cta-section .btn-enter {
+    background-color: #008091; 
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 128, 145, 0.4);
+}
+
+.cta-section .btn-enter:hover {
+    background-color: #06c1fa;
+    transform: translateY(-3px); /* Efeito "levantar" - [MUDANÇA AQUI] */
+    box-shadow: 0 6px 15px rgba(6, 193, 250, 0.5);
+}
+
+/* Botão Saber Mais/Sobre Nós com efeito de "zoom" no hover */
+.cta-section .btn-about {
+    background-color: #f0f2f5; 
+    color: #008091;
+    border: 2px solid #008091;
+}
+
+.cta-section .btn-about:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05); /* Efeito de "zoom" - [MUDANÇA AQUI] */
+}
+
+/* Estilos para a seção "O Projeto" */
+.project-content {
+    text-align: left;
+    margin-top: 40px;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.project-content h2 {
+    color: #02adfc;
+    border-bottom: 2px solid #3fa5f8;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    font-size: 1.8em;
+}
+
+/* MUDANÇA: Melhor formatação de texto para leitura - [MUDANÇA AQUI] */
+.project-description {
+    line-height: 1.6; /* Aumenta o espaçamento entre linhas */
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+/* ------------------ ESTILOS DA PÁGINA SOBRE NÓS (SOBRE.HTML) ------------------ */
+
+.team-section {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+}
+
+.team-section h2 {
+    color: #008091;
+    border-bottom: 2px solid #06c1fa;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* MUDANÇA: Efeito de destaque (sombra e levantamento) para os membros da equipe - [MUDANÇA AQUI] */
+.team-member {
+    width: 140px; 
+    text-align: center;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+}
+
+/* MUDANÇA: Estilo para o container da líder (Dayanne) - [MUDANÇA AQUI] */
+.leader {
+    width: 160px; 
+}
+
+/* MUDANÇA: Estilo para a foto/bola da líder (maior e com borda destacada) - [MUDANÇA AQUI] */
+.leader .member-photo {
+    width: 140px;
+    height: 140px;
+    border: 5px solid #06c1fa; 
+}
+
+/* Membros da Equipe (Foto Placeholder) */
+.member-photo {
+    width: 120px; 
+    height: 120px;
+    background-color: #e0f7fa; 
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em; 
+    color: #008091;
+    border: 3px solid #b2ebf2; 
+    transition: border-color 0.3s;
+}
+
+.team-member:hover .member-photo {
+    border-color: #008091;
+}
+
+.team-member p {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 5px 0 0;
+}
+
+.team-member span {
+    font-size: 0.8em;
+    color: #777;
+    display: block;
+}
+
+/* Seção de Contato */
+.contact-info {
+    text-align: left;
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #e9f5ff; /* Fundo suave para contato - [MUDANÇA AQUI] */
+    border-radius: 8px;
+    border-left: 5px solid #02adfc; /* Destaque lateral - [MUDANÇA AQUI] */
+}
+
+.contact-info h3 {
+    color: #02adfc;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.contact-info p {
+    margin: 15px 0;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+}
+
+.contact-info i {
+    color: #008091;
+    margin-right: 15px;
+    width: 25px;
+    text-align: center;
+    font-size: 1.3em;
+}
