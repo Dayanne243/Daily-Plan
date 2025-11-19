@@ -1,47 +1,236 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Plan - Login</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
-    </div>
-    
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    
+    <title>Daily Plan | Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        azure: {
+                            100: '#E1F5FE',
+                            200: '#B3E5FC',
+                            300: '#81D4FA',
+                            400: '#4FC3F7',
+                            500: '#29B6F6',
+                            600: '#03A9F4',
+                            700: '#0288D1',
+                            800: '#0277BD',
+                            900: '#01579B',
+                        }
+                    }
+                }
+            }
+        }
     </script>
-    <div class="container_login">
-        <h1>Daily Plan</h1>
-
-        <div class="form-container">
-            <div id="login-form" class="form active">
-                <h2>Login</h2>
-                <form id="login-page">
-                    <div class="input-group">
-                        <i class="fas fa-user"></i>
-                        <input type="email" id="login-email" placeholder="Email" required>
-                    </div>
-                    <div class="input-group">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="login-password" placeholder="Senha" required>
-                    </div>
-                    <button type="submit">Entrar</button>
-                    <p class="toggle-link">Não tem uma conta? <a href="registro.html" id="register">Registre-se</a></p>
-                </form>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e1f5fe 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.07);
+        }
+        .input-focus:focus {
+            border-color: #4FC3F7;
+            box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.2);
+        }
+    </style>
+</head>
+    
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <!-- Tabs -->
+        <div class="flex mb-8">
+            <button id="loginTab" class="flex-1 py-4 px-6 text-center font-medium text-azure-600 border-b-2 border-azure-500 transition-all duration-300">
+                Login
+            </button>
+            <button id="registerTab" class="flex-1 py-4 px-6 text-center font-medium text-gray-500 border-b border-gray-200 transition-all duration-300">
+                Cadastro
+            </button>
+        </div>
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
             </div>
+        </div>
+        
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        <!-- Login Form -->
+        <div id="loginForm" class="bg-white rounded-xl p-8 card-shadow">
+            <h1 class="text-2xl font-bold text-gray-800 mb-6">Bem-vindo de volta</h1>
+            
+            <form class="space-y-5">
+                <div>
+                    <label for="loginEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i data-feather="mail" class="text-gray-400"></i>
+                        </div>
+                        <input type="email" id="loginEmail" class="pl-10 w-full px-4 py-3 rounded-lg border border-gray-300 input-focus focus:outline-none transition duration-300" placeholder="seu@email.com" required>
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="loginPassword" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i data-feather="lock" class="text-gray-400"></i>
+                        </div>
+                        <input type="password" id="loginPassword" class="pl-10 w-full px-4 py-3 rounded-lg border border-gray-300 input-focus focus:outline-none transition duration-300" placeholder="••••••••" required>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input id="rememberMe" type="checkbox" class="h-4 w-4 text-azure-500 focus:ring-azure-400 border-gray-300 rounded">
+                        <label for="rememberMe" class="ml-2 block text-sm text-gray-700">Lembrar-me</label>
+                    </div>
+                    <a href="#" class="text-sm text-azure-600 hover:text-azure-700">Esqueceu a senha?</a>
+                </div>
+                
+                <button type="submit" class="w-full bg-azure-500 hover:bg-azure-600 text-white font-medium py-3 px-4 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                    Entrar
+                </button>
+            </form>
+            
+            <div class="mt-6">
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white text-gray-500">Ou continue com</span>
+                    </div>
+                </div>
+                
+                <div class="mt-6 grid grid-cols-1 gap-3">
+                    <button class="w-full inline-flex justify-center items-center py-3 px-4 border border-gray-300 rounded-lg shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition duration-300">
+                        <img src="https://www.svgrepo.com/show/355037/google.svg" class="h-5 w-5 mr-2" alt="Google logo">
+                        Entrar com Google
+                    </button>
+                </div>
+            </div>
+        </div>
 
+        <!-- Register Form (Hidden by default) -->
+        <div id="registerForm" class="bg-white rounded-xl p-8 card-shadow hidden">
+            <h1 class="text-2xl font-bold text-gray-800 mb-6">Crie sua conta</h1>
+            
+            <form class="space-y-5">
+                <div>
+                    <label for="registerName" class="block text-sm font-medium text-gray-700 mb-1">Nome completo</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i data-feather="user" class="text-gray-400"></i>
+                        </div>
+                        <input type="text" id="registerName" class="pl-10 w-full px-4 py-3 rounded-lg border border-gray-300 input-focus focus:outline-none transition duration-300" placeholder="Seu nome" required>
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="registerEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i data-feather="mail" class="text-gray-400"></i>
+                        </div>
+                        <input type="email" id="registerEmail" class="pl-10 w-full px-4 py-3 rounded-lg border border-gray-300 input-focus focus:outline-none transition duration-300" placeholder="seu@email.com" required>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="registerPassword" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i data-feather="lock" class="text-gray-400"></i>
+                            </div>
+                            <input type="password" id="registerPassword" class="pl-10 w-full px-4 py-3 rounded-lg border border-gray-300 input-focus focus:outline-none transition duration-300" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="registerConfirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirme a senha</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i data-feather="lock" class="text-gray-400"></i>
+                            </div>
+                            <input type="password" id="registerConfirmPassword" class="pl-10 w-full px-4 py-3 rounded-lg border border-gray-300 input-focus focus:outline-none transition duration-300" placeholder="••••••••" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="flex items-center h-5">
+                        <input id="terms" type="checkbox" class="h-4 w-4 text-azure-500 focus:ring-azure-400 border-gray-300 rounded" required>
+                    </div>
+                    <div class="ml-3 text-sm">
+                        <label for="terms" class="text-gray-700">Eu concordo com os <a href="#" class="text-azure-600 hover:text-azure-700">Termos de Serviço</a> e <a href="#" class="text-azure-600 hover:text-azure-700">Política de Privacidade</a></label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="w-full bg-azure-500 hover:bg-azure-600 text-white font-medium py-3 px-4 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                    Criar conta
+                </button>
+            </form>
+            
+            <div class="mt-6 text-center text-sm">
+                <p class="text-gray-500">Já tem uma conta? 
+                    <a href="#" id="switchToLogin" class="text-azure-600 hover:text-azure-700 font-medium">Faça login</a>
+                </p>
+            </div>
         </div>
     </div>
+
+    <script>
+        // Tab switching functionality
+        const loginTab = document.getElementById('loginTab');
+        const registerTab = document.getElementById('registerTab');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const switchToLogin = document.getElementById('switchToLogin');
+
+        function showLogin() {
+            loginTab.classList.add('text-azure-600', 'border-azure-500');
+            loginTab.classList.remove('text-gray-500', 'border-gray-200');
+            registerTab.classList.add('text-gray-500', 'border-gray-200');
+            registerTab.classList.remove('text-azure-600', 'border-azure-500');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        }
+
+        function showRegister() {
+            registerTab.classList.add('text-azure-600', 'border-azure-500');
+            registerTab.classList.remove('text-gray-500', 'border-gray-200');
+            loginTab.classList.add('text-gray-500', 'border-gray-200');
+            loginTab.classList.remove('text-azure-600', 'border-azure-500');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        }
+
+        loginTab.addEventListener('click', showLogin);
+        registerTab.addEventListener('click', showRegister);
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            showLogin();
+        });
+
+        // Initialize feather icons
+        feather.replace();
+    </script>
+</body>
+</html>
     <script src="script.js"></script>
 </body>
 </html>
