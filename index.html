@@ -46,7 +46,6 @@
     
 <body class="min-h-screen flex items-center justify-center p-4">
     <div class="w-full max-w-md">
-        <!-- Tabs -->
         <div class="flex mb-8">
             <button id="loginTab" class="flex-1 py-4 px-6 text-center font-medium text-azure-600 border-b-2 border-azure-500 transition-all duration-300">
                 Login
@@ -67,11 +66,10 @@
         <script>
             new window.VLibras.Widget('https://vlibras.gov.br/app');
         </script>
-        <!-- Login Form -->
         <div id="loginForm" class="bg-white rounded-xl p-8 card-shadow">
             <h1 class="text-2xl font-bold text-gray-800 mb-6">Bem-vindo de volta</h1>
             
-            <form class="space-y-5">
+            <form id="loginFormTag" class="space-y-5">
                 <div>
                     <label for="loginEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
                     <div class="relative">
@@ -100,7 +98,7 @@
                     <a href="#" class="text-sm text-azure-600 hover:text-azure-700">Esqueceu a senha?</a>
                 </div>
                 
-                <button type="submit" class="w-full bg-azure-500 hover:bg-azure-600 text-white font-medium py-3 px-4 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                <button type="submit" id="loginButton" class="w-full bg-azure-500 hover:bg-azure-600 text-white font-medium py-3 px-4 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
                     Entrar
                 </button>
             </form>
@@ -123,53 +121,13 @@
                 </div>
             </div>
         </div>
-
-        <!-- Register Form (Hidden by default) -->
         <div id="registerForm" class="bg-white rounded-xl p-8 card-shadow hidden">
             <h1 class="text-2xl font-bold text-gray-800 mb-6">Crie sua conta</h1>
             
-            <form class="space-y-5">
-                <div>
-                    <label for="registerName" class="block text-sm font-medium text-gray-700 mb-1">Nome completo</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <i data-feather="user" class="text-gray-400"></i>
-                        </div>
-                        <input type="text" id="registerName" class="pl-10 w-full px-4 py-3 rounded-lg border border-gray-300 input-focus focus:outline-none transition duration-300" placeholder="Seu nome" required>
-                    </div>
-                </div>
-                
-                <div>
-                    <label for="registerEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <i data-feather="mail" class="text-gray-400"></i>
-                        </div>
-                        <input type="email" id="registerEmail" class="pl-10 w-full px-4 py-3 rounded-lg border border-gray-300 input-focus focus:outline-none transition duration-300" placeholder="seu@email.com" required>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label for="registerPassword" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i data-feather="lock" class="text-gray-400"></i>
-                            </div>
-                            <input type="password" id="registerPassword" class="pl-10 w-full px-4 py-3 rounded-lg border border-gray-300 input-focus focus:outline-none transition duration-300" placeholder="••••••••" required>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <label for="registerConfirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirme a senha</label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <i data-feather="lock" class="text-gray-400"></i>
-                            </div>
-                            <input type="password" id="registerConfirmPassword" class="pl-10 w-full px-4 py-3 rounded-lg border border-gray-300 input-focus focus:outline-none transition duration-300" placeholder="••••••••" required>
-                        </div>
-                    </div>
-                </div>
+            <form id="registerFormTag" class="space-y-5">
+                <div>...</div>
+                <div>...</div>
+                <div>...</div>
                 
                 <div class="flex items-start">
                     <div class="flex items-center h-5">
@@ -180,7 +138,7 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="w-full bg-azure-500 hover:bg-azure-600 text-white font-medium py-3 px-4 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+                <button type="submit" id="registerButton" class="w-full bg-azure-500 hover:bg-azure-600 text-white font-medium py-3 px-4 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
                     Criar conta
                 </button>
             </form>
@@ -194,12 +152,16 @@
     </div>
 
     <script>
-        // Tab switching functionality
         const loginTab = document.getElementById('loginTab');
         const registerTab = document.getElementById('registerTab');
         const loginForm = document.getElementById('loginForm');
         const registerForm = document.getElementById('registerForm');
         const switchToLogin = document.getElementById('switchToLogin');
+
+        // NOVOS ELEMENTOS
+        const loginFormTag = document.getElementById('loginFormTag');
+        const registerFormTag = document.getElementById('registerFormTag');
+        //const loginButton = document.getElementById('loginButton'); // Não é necessário pegar o botão, pois pegamos o formulário
 
         function showLogin() {
             loginTab.classList.add('text-azure-600', 'border-azure-500');
@@ -219,6 +181,27 @@
             loginForm.classList.add('hidden');
         }
 
+        // --- Adicionado a lógica de redirecionamento para o formulário de Login ---
+        loginFormTag.addEventListener('submit', function(e) {
+            // Impedir que o formulário recarregue a página
+            e.preventDefault(); 
+            
+            // Simular a lógica de login (por exemplo, verificar credenciais)
+            // *** IMPORTANTE: Você deve substituir este trecho pela sua VERIFICAÇÃO REAL de credenciais no lado do servidor. ***
+            
+            // Redireciona o usuário para a página de destino após o (suposto) login bem-sucedido
+            window.location.href = "agenda.html"; // Mude "dashboard.html" para o nome do seu arquivo de destino
+        });
+        
+        // --- Adicionado a lógica de redirecionamento para o formulário de Cadastro (opcional) ---
+        registerFormTag.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simular o envio de cadastro. Depois de cadastrar, você geralmente redireciona para o login ou para o dashboard.
+            window.location.href = "sucesso-cadastro.html"; // Mude "sucesso-cadastro.html" para sua página de destino
+        });
+        // --------------------------------------------------------------------------
+
         loginTab.addEventListener('click', showLogin);
         registerTab.addEventListener('click', showRegister);
         switchToLogin.addEventListener('click', (e) => {
@@ -229,8 +212,5 @@
         // Initialize feather icons
         feather.replace();
     </script>
-</body>
-</html>
-    <script src="script.js"></script>
 </body>
 </html>
