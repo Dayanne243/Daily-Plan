@@ -419,3 +419,31 @@ ul#task-list li.completed {
     text-align: center;
     font-size: 1.3em;
 }
+/*botão do calendário*/
+#calendario-btn {
+    background-color: #60a5fa;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(96, 165, 250, 0.2);
+}
+
+#calendario-btn:hover {
+    background-color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(96, 165, 250, 0.3);
+}
+
+#calendario-btn i {
+    font-size: 18px;
+}
