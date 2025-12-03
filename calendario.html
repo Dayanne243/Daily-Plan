@@ -210,9 +210,8 @@
     <h1 style="font-size: 32px; font-weight: 300; text-align: center; color: #1e40af; margin: 0 120px;">Calendário</h1>
 </div>
 
-                <!-- Calendar -->
                 <div style="background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-radius: 24px; padding: 32px;">
-                    <!-- Month Navigation -->
+
                     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px;">
                         <button onclick="previousMonth()" style="background: none; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #3b82f6; font-size: 20px; transition: all 0.2s ease;" onmouseover="this.style.backgroundColor='#f0f9ff'" onmouseout="this.style.backgroundColor='transparent'">
                             ←
@@ -223,7 +222,7 @@
                         </button>
                     </div>
 
-                    <!-- Day Names -->
+
                     <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 16px;">
                         <div style="text-align: center; font-weight: 300; color: #3b82f6; padding: 8px; font-size: 14px;">Dom</div>
                         <div style="text-align: center; font-weight: 300; color: #3b82f6; padding: 8px; font-size: 14px;">Seg</div>
@@ -234,11 +233,8 @@
                         <div style="text-align: center; font-weight: 300; color: #3b82f6; padding: 8px; font-size: 14px;">Sab</div>
                     </div>
 
-                    <!-- Calendar Grid -->
                     <div id="calendar" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px;"></div>
                 </div>
-
-                <!-- Events List -->
                 <div id="eventsList" style="background-color: white; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); border-radius: 24px; padding: 32px; margin-top: 24px; display: none;">
                     <h3 style="font-size: 18px; font-weight: 300; color: #1e40af; margin-bottom: 16px;">Eventos</h3>
                     <div id="eventsContainer"></div>
@@ -246,7 +242,7 @@
             </div>
         </main>
 
-        <!-- Modal -->
+
         <div id="modal" class="modal">
             <div class="modal-content">
                 <div class="modal-title" id="modalTitle"></div>
@@ -258,7 +254,7 @@
             </div>
         </div>
 
-        <!-- Footer -->
+
         <footer style="background-color: #dbeafe; color: #3b82f6; text-align: center; padding: 16px; box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);">
             <p style="font-size: 12px; font-weight: 300;">© 2024</p>
         </footer>
@@ -416,6 +412,7 @@
 
 
         renderCalendar();
-    </script>
+</script>        
+        <script src="home.js"></script>
 </body>
 </html>
